@@ -3,6 +3,10 @@ import express from "express";
 const server = express();
 
 
-server.listen(6000, () => {
-    console.log("SERVER IS RUNNING ON PORT " + 6000);
+server.get("/", (req,res) => {
+    res.send("HELLO WORLD");
+});
+
+server.listen(8080, () => {
+    console.log("SERVER IS RUNNING ON PORT " + 8080);
 });
