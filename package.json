@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "Path of my knowledge in nodejs",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "start": "nodemon servers/express"
+    "dev": "nodemon servers/quotes-project"
   },
   "author": "Luis Rosario",
   "license": "ISC",
