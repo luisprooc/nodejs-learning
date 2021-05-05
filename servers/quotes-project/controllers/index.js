@@ -1,1 +1,4 @@
-import HomeController from "./home-controller";
+
+module.exports = {
+    HomeController: require("./home-controller")
+};

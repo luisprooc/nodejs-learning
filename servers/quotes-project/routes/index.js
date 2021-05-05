@@ -1,1 +1,4 @@
-import HomeRoutes from "./home-routes";
+
+module.exports = {
+    HomeRoutes: require("./home-routes")
+}
