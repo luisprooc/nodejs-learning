@@ -33,6 +33,19 @@ switch(command){
             .catch(console.log)
         break;
 
+    case CRUD.DELETE:
+
+        const params = args.slice(1)[0];
+        const id = params.split(":")[1];
+        
+        db[entity]
+            .findByPk(id)
+            .then( data => data.destroy())
+            .catch(console.log)
+        
+        break;
+
     default:
         console.log("OPERATION NOT FOUND 💥");
+        break;
 }
