@@ -1,0 +1,17 @@
+{
+  "name": "mongo-project",
+  "version": "1.0.0",
+  "description": "Web scrapper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Luis Rosario",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.9",
+    "mongoose": "^5.12.10",
+    "node-cron": "^3.0.0"
+  }
+}
