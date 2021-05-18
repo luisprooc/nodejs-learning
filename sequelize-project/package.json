@@ -1,0 +1,16 @@
+{
+  "name": "sequelize-project",
+  "version": "1.0.0",
+  "description": "Small project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Luis Rosario",
+  "license": "ISC",
+  "dependencies": {
+    "sequelize": "^6.6.2",
+    "sequelize-cli": "^6.2.0",
+    "sqlite3": "^5.0.2"
+  }
+}
