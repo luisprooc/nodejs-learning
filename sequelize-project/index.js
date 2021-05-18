@@ -36,13 +36,42 @@ switch(command){
     case CRUD.DELETE:
 
         const params = args.slice(1)[0];
-        const id = params.split(":")[1];
+        const id = params.split("=")[1];
         
         db[entity]
             .findByPk(id)
             .then( data => data.destroy())
             .catch(console.log)
         
+        break;
+
+    case CRUD.UPDATE:
+
+        const paramsUpdate = args.slice(1)[0];
+        const idUpdate = paramsUpdate.split("=")[1];
+
+        db[entity]
+            .findByPk(idUpdate)
+            .then(res => {
+                const params = args.slice(1);
+                
+                const newData = {};
+                
+                params.forEach(data => {
+                    const entity = data.substring(2).split("=");
+                    const [key, value] = entity;
+
+                    newData[key] = value;
+                });
+
+                res.update(newData);
+            
+
+                console.log("UPDATE");
+
+            })
+            .catch(console.log);
+
         break;
 
     default:
