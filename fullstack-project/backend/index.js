@@ -1,6 +1,15 @@
 const server = require("./server");
-const {PORT} = require("./config");
+const {PORT, MONGO_URI} = require("./config");
+const mongoose = require("mongoose");
 
-server.listen(PORT, ()=>{
-    console.log(`SERVER RUNNING IN PORT ${PORT}`);
+mongoose.connect(MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 })
+.then(()=> {
+    server.listen(PORT, ()=>{
+        console.log(`SERVER RUNNING IN PORT ${PORT}`);
+    });
+
+})
+.catch(console.log);
