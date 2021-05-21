@@ -2,6 +2,7 @@ import React,{useState,useLayoutEffect} from 'react';
 import CardTechnology from '../Card-Technology';
 import Rotate from 'react-reveal/Rotate';
 import Loading from "../Loading";
+import { Link } from "react-router-dom";
 
 const TechnologiesPage = () =>{
     const [technologies,saveTechnologies] = useState([]);
@@ -22,11 +23,13 @@ const TechnologiesPage = () =>{
                         const {name, description,logo,_id} = technology;
                         return(
                             <div className="col-12 col-md-6 col-lg-auto mx-auto" key={_id}>
-                                <CardTechnology
-                                    name={name}
-                                    description={description}
-                                    logo={logo}
-                                />
+                                <Link to={`/api/technology/${_id}`} className="text-decoration-none">
+                                    <CardTechnology
+                                        name={name}
+                                        description={description}
+                                        logo={logo}
+                                    />
+                                </Link>
                             </div>
                         )
                     })}
