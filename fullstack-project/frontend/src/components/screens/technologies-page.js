@@ -1,5 +1,6 @@
 import React,{useState,useLayoutEffect} from 'react';
-//import Zoom from 'react-reveal/Zoom';
+import CardTechnology from "../card-technology";
+import Rotate from 'react-reveal/Rotate';
 
 const TechnologiesPage = () =>{
     const [technologies,saveTechnologies] = useState([]);
@@ -7,26 +8,32 @@ const TechnologiesPage = () =>{
     useLayoutEffect(() => {
         fetch("http://localhost:3500/api/technologies")
             .then(res => res.json())
-            .then(({data}) => saveTechnologies(data))
+            .then(({data}) => saveTechnologies())
     }, []);
 
     return technologies?(
         <section>
             <div className="container py-5">
                <h1 className="text-primary text-center">TECHNOLOGIES</h1>
-               <div>
-                   {technologies.map(technology => {
-                       const {name, description,logo} = technology;
-                       return(
-                            <div>
-                                <img src={logo}/>
-                            </div>
-                       )
-                   })}
-               </div>
+               <Rotate left>
+                <div className="row py-5">
+                    {technologies.map(technology => {
+                        const {name, description,logo,_id} = technology;
+                        return(
+                                <div className="col-12 col-md-6 col-lg-auto mx-auto" key={_id}>
+                                    <CardTechnology
+                                        name={name}
+                                        description={description}
+                                        logo={logo}
+                                    />
+                                </div>
+                        )
+                    })}
+                </div>
+               </Rotate>
             </div>
         </section>
-    ):null;
+    ):<h1>LOADING</h1>;
 };
 
 export default TechnologiesPage;
