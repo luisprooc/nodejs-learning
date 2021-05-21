@@ -1,6 +1,7 @@
 import React,{useState,useLayoutEffect} from 'react';
-import CardTechnology from "../card-technology";
+import CardTechnology from '../Card-Technology';
 import Rotate from 'react-reveal/Rotate';
+import Loading from "../Loading";
 
 const TechnologiesPage = () =>{
     const [technologies,saveTechnologies] = useState([]);
@@ -8,7 +9,7 @@ const TechnologiesPage = () =>{
     useLayoutEffect(() => {
         fetch("http://localhost:3500/api/technologies")
             .then(res => res.json())
-            .then(({data}) => saveTechnologies())
+            .then(({data}) => saveTechnologies(data))
     }, []);
 
     return technologies?(
@@ -20,20 +21,20 @@ const TechnologiesPage = () =>{
                     {technologies.map(technology => {
                         const {name, description,logo,_id} = technology;
                         return(
-                                <div className="col-12 col-md-6 col-lg-auto mx-auto" key={_id}>
-                                    <CardTechnology
-                                        name={name}
-                                        description={description}
-                                        logo={logo}
-                                    />
-                                </div>
+                            <div className="col-12 col-md-6 col-lg-auto mx-auto" key={_id}>
+                                <CardTechnology
+                                    name={name}
+                                    description={description}
+                                    logo={logo}
+                                />
+                            </div>
                         )
                     })}
                 </div>
                </Rotate>
             </div>
         </section>
-    ):<h1>LOADING</h1>;
+    ): <Loading/> ;
 };
 
 export default TechnologiesPage;
