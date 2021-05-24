@@ -11,8 +11,10 @@ const ResultsPage = ({name}) => {
         fetch(`http://localhost:3500/api/technology/search/${name}`)
             .then(data => data.json())
             .then(({data}) => setResults(data))
+            console.log(name)
     }, [name]);
 
+     
     return results ?(
         <section>
             <div className="container">

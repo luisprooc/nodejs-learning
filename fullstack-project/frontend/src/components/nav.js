@@ -1,6 +1,8 @@
 import React, { useState} from 'react';
 import {Link} from 'react-router-dom';
-import {SearchIcon} from './icons/icons.js';
+import {SearchIcon} from './Icons';
+import NavMobile from "./Nav-Mobile";
+
 
 const Nav = () => {
     const [openMenu, setOpenMenu] = useState(false);
@@ -8,7 +10,7 @@ const Nav = () => {
 
     const handlerMenu = () => setOpenMenu(!openMenu);
     
-    const handlerInput = (e) => setName(e.target.value);
+    const handlerInput = (e) => e.target.value ? setName(e.target.value) : setName(null);
 
     return( 
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,6 +28,15 @@ const Nav = () => {
                 >
                 <span className="navbar-toggler-icon"></span>
                 </button>
+                {openMenu && (
+                    <>
+                        <NavMobile 
+                            setOpenMenu={setOpenMenu} 
+                            handlerInput={handlerInput} 
+                            name={name}
+                        />
+                    </>
+                )}
 
             <div className="collapse navbar-collapse" id="navbarColor03">
             <ul className="navbar-nav me-auto">
