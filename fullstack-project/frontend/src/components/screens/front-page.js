@@ -22,7 +22,7 @@ const FrontPage = () =>{
                             </p>
                         </div>
                         <div className="d-block mx-auto p-4">
-                            <Link to="/api/technologies" className="btn btn-primary btn-lg">MORE ABOUT TECH 💛</Link>
+                            <Link to="/about" className="btn btn-primary btn-lg">MORE ABOUT TECH 💛</Link>
                         </div>
                     </div>
                 </Zoom>
