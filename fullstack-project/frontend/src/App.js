@@ -11,7 +11,7 @@ const App = () =>{
         <Route exact path="/" component={FrontPage}/>
         <Route exact path="/about" component={AboutPage}/>
         <Route exact path="/api/technologies" render={()=> <TechnologiesPage />}/>
-        <Route exact path="/api/technology/:id" render={()=> <SingleTechnology />}/>
+        <Route exact path="/api/technology/:id" render={({match})=> <SingleTechnology id={match.params.id}/>}/>
       </Switch>
     </BrowserRouter>
   )
