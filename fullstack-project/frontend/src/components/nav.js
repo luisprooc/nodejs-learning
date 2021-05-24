@@ -4,8 +4,11 @@ import {SearchIcon} from './icons/icons.js';
 
 const Nav = () => {
     const [openMenu, setOpenMenu] = useState(false);
+    const [name, setName] = useState('');
 
-    const handlerMenu = () => console.log("HEY");
+    const handlerMenu = () => setOpenMenu(!openMenu);
+    
+    const handlerInput = (e) => setName(e.target.value);
 
     return( 
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -39,8 +42,8 @@ const Nav = () => {
                 </li>
             </ul>
             <form className="d-flex">
-                <input className="form-control me-sm-2" type="text" placeholder="Search"/>
-                <button className="btn btn-secondary my-2 my-sm-0" type="submit"><SearchIcon /></button>
+                <input className="form-control me-sm-2" type="text" placeholder="Search" onChange={handlerInput}/>
+                <Link className="btn btn-secondary my-2 my-sm-0" to={`/api/technology/search/${name}`}><SearchIcon /></Link>
             </form>
             </div>
         </div>
