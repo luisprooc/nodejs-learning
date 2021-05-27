@@ -2,12 +2,12 @@ let _commentService = null;
 
 class CommentController {
     constructor({CommentService}){
-        _commentService = commentService;
+        _commentService = CommentService;
     }
 
     async get(req,res){
         const {commentId} = req;
-        const comment = await _commentService;
+        const comment = await _commentService.get(commentId);
         return res.send(comment);
     }
 
