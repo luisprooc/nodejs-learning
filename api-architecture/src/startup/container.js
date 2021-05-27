@@ -4,13 +4,13 @@ const {createContainer, asClass, asValue, asFunction} = require("awilix");
 const config = require("../config");
 
 // Services
-const {HomeService,CommentService,IdeaService,UserService} = require("../services");
+const {HomeService,CommentService,IdeaService,UserService,AuthService} = require("../services");
 
 // Controllers
-const {HomeController,CommentController,IdeaController,UserController} = require("../controllers");
+const {HomeController,CommentController,IdeaController,UserController, AuthController} = require("../controllers");
 
 //Routes
-const {HomeRoutes,CommentRoutes,IdeaRoutes,UserRoutes} = require("../routes/index-routes");
+const {HomeRoutes,CommentRoutes,IdeaRoutes,UserRoutes, AuthRoutes} = require("../routes/index-routes");
 const Routes = require("../routes");
 
 // Models
@@ -35,12 +35,14 @@ container
         UserService: asClass(UserService).singleton(),
         IdeaService: asClass(IdeaService).singleton(),
         CommentService: asClass(CommentService).singleton(),
+        AuthService: asClass(AuthService).singleton(),
     })
     .register({
         HomeController: asClass(HomeController.bind(HomeController)).singleton(),
         CommentController: asClass(CommentController.bind(CommentController)).singleton(),
         IdeaController: asClass(IdeaController.bind(IdeaController)).singleton(),
         UserController: asClass(UserController.bind(UserController)).singleton(),
+        AuthController: asClass(AuthController.bind(AuthController)).singleton(),
         
     })
     .register({
@@ -48,6 +50,7 @@ container
         CommentRoutes: asFunction(CommentRoutes).singleton(),
         IdeaRoutes: asFunction(IdeaRoutes).singleton(),
         UserRoutes: asFunction(UserRoutes).singleton(),
+        AuthRoutes: asFunction(AuthRoutes).singleton(),
     })
     .register({
         User: asValue(User),

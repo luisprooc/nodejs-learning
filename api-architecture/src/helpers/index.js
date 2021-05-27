@@ -1,3 +1,4 @@
 module.exports = {
-    ErrorHelper: require("./error-helper")
+    ErrorHelper: require("./error-helper"),
+    JwtHelper: require("./jwt-helper")
 };
