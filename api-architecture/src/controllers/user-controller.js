@@ -7,7 +7,7 @@ class UserController {
 
     async get(req,res){
         const {userId} = req;
-        const user = await _userService;
+        const user = await _userService.get(userId);
         return res.send(user);
     }
 

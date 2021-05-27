@@ -12,11 +12,13 @@ class CommentService extends BaseService{
     }
 
     async getIdeaComments(ideaId){
-        ErrorHelper(ideaId, message="IdeaId must be sent");
+        this.setMessage("ideaId must be sent");
+        ErrorHelper(ideaId, this._message);
 
         const idea = await _ideaRepository.get(ideaId);
 
-        ErrorHelper(idea, "Idea does not exist");
+        this.setMessage("Idea does not exist");
+        ErrorHelper(idea, this._message);
 
         const {comments} = idea;
 
@@ -24,11 +26,13 @@ class CommentService extends BaseService{
     }
 
     async createComment(comment, ideaId){
-        ErrorHelper(ideaId, message="IdeaId must be sent");
+        this.setMessage("ideaId must be sent");
+        ErrorHelper(ideaId, this._message);
 
         const idea = await _ideaRepository.get(ideaId);
 
-        ErrorHelper(idea, "Idea does not exist");
+        this.setMessage("Comment must be sent");
+        ErrorHelper(idea, this._message);
 
         const createdComment = await _commentRepository.create(comment);
         idea.comments.push(createdComment);

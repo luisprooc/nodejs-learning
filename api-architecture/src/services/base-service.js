@@ -3,14 +3,20 @@ const {ErrorHelper} = require("../helpers");
 class BaseService {
     constructor(repository){
         this.repository = repository;
+        this._message = null;
+        this.setMessage = (message) => {
+            this._message = message;
+        };
     }
 
     async get(id){
-        ErrorHelper(id, message="id must be sent")
+        this.setMessage("id must be sent");
+        ErrorHelper(id, this._message);
 
         const currentEntity = await this.repository.get(id);
 
-        ErrorHelper(currentEntity, message="Entity does not found");
+        this.setMessage("Entity does not found");
+        ErrorHelper(currentEntity, this._message);
 
         return currentEntity;
     }
@@ -24,13 +30,15 @@ class BaseService {
     }
 
     async update(id, entity){
-        oldEntity = this.get(id);
+        this.setMessage("id must be sent");
+        ErrorHelper(id, this._message);
 
         return await this.repository.update(id,entity); 
     }
 
     async delete(id){
-        entity = this.get(id);
+        this.setMessage("id must be sent");
+        ErrorHelper(id, this._message);
 
         return await this.repository.delete(id);
     }

@@ -9,19 +9,20 @@ class IdeaService extends BaseService{
     }
 
     async getUserIdeas(author){
-
-        ErrorHelper(author, message="userId must be sent");
+        this.setMessage("userId must be sent");
+        ErrorHelper(author, this._message);
 
         return await _ideaRepository.getUserIdeas(author);
     }
 
     async upvoteIdea(ideaId){
-
-        ErrorHelper(ideaId, message="ideaId must be sent");
+        this.setMessage("ideaId must be sent");
+        ErrorHelper(ideaId, this._message);
 
         const idea = await _ideaRepository.get(ideaId);
 
-        ErrorHelper(idea, message="Idea does not exist");
+        this.setMessage("idea does not exist");
+        ErrorHelper(idea, this._message);
 
         idea.upvotes.push(true);
 
@@ -29,12 +30,13 @@ class IdeaService extends BaseService{
     }
 
     async downvoteIdea(ideaId){
-
-        ErrorHelper(ideaId, message="ideaId must be sent");
+        this.setMessage("ideaId must be sent");
+        ErrorHelper(ideaId, this._message);
 
         const idea = await _ideaRepository.get(ideaId);
 
-        ErrorHelper(idea, message="Idea does not exist");
+        this.setMessage("idea does not exist");
+        ErrorHelper(idea, this._message);
 
         idea.downvotes.push(true);
 
