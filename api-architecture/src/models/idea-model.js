@@ -15,8 +15,8 @@ const IdeaSchema = new Schema({
     comments: [{
         type: Schema.Types.ObjectId,
         ref: "comment",
-        required: true,
-        autopopulate: true
+        autopopulate: true,
+        required: true
     }]
 });
 
