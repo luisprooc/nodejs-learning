@@ -9,35 +9,26 @@ class IdeaService extends BaseService{
     }
 
     async getUserIdeas(author){
-        this.setMessage("userId must be sent");
-        ErrorHelper(author, this._message);
+        ErrorHelper(author, "userId must be sent");
 
         return await _ideaRepository.getUserIdeas(author);
     }
 
     async upvoteIdea(ideaId){
-        this.setMessage("ideaId must be sent");
-        ErrorHelper(ideaId, this._message);
-
+        ErrorHelper(ideaId, "ideaId must be sent");
         const idea = await _ideaRepository.get(ideaId);
 
-        this.setMessage("idea does not exist");
-        ErrorHelper(idea, this._message);
-
+        ErrorHelper(idea, "idea does not exist");
         idea.upvotes.push(true);
 
         return await _ideaRepository.update(ideaId, {upvotes: idea.upvotes});
     }
 
     async downvoteIdea(ideaId){
-        this.setMessage("ideaId must be sent");
-        ErrorHelper(ideaId, this._message);
-
+        ErrorHelper(ideaId, "ideaId must be sent");
         const idea = await _ideaRepository.get(ideaId);
 
-        this.setMessage("idea does not exist");
-        ErrorHelper(idea, this._message);
-
+        ErrorHelper(idea, "idea does not exist");
         idea.downvotes.push(true);
 
         return await _ideaRepository.update(ideaId, {downvotes: idea.downvotes});

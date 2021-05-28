@@ -6,7 +6,7 @@ class CommentController {
     }
 
     async get(req,res){
-        const {commentId} = req;
+        const {commentId} = req.params;
         const comment = await _commentService.get(commentId);
         return res.send(comment);
     }

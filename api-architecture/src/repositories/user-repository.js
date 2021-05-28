@@ -10,6 +10,10 @@ class UserRepository extends BaseRepository{
     async getUserByUsername(username){
         return await _user.findOne({username});
     }
+
+    async comparePasswords(password){
+        return await _user.comparePasswords(password);
+    }
 }
 
 module.exports = UserRepository;

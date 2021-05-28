@@ -10,6 +10,10 @@ class UserService extends BaseService{
     async getUserByUsername(username){
         return await _userRepository.getUserByUsername(username);
     }
+
+    async comparePasswords(password){
+        return await _userRepository.comparePasswords(password);
+    }
 };
 
 module.exports = UserService;

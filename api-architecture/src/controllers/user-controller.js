@@ -6,7 +6,7 @@ class UserController {
     }
 
     async get(req,res){
-        const {userId} = req;
+        const {userId} = req.params;
         const user = await _userService.get(userId);
         return res.send(user);
     }
@@ -17,6 +17,7 @@ class UserController {
     }
 
     async update(req,res){
+        console.log(req.body)
         const {body} = req;
         const {userId} = req.params;
         const updateUser = await _userService.update(userId, body);
